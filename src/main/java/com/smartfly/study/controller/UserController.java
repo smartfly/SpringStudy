@@ -5,10 +5,13 @@ import com.smartfly.study.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 /**
  * Created with IntelliJ IDEA.
@@ -61,7 +64,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String postUser(@ModelAttribute User user){
+    public String postUser(ModelMap map,
+                           @ModelAttribute @Valid User user,
+                           BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            map.addAttribute("action", "create");
+            return "userForm";
+        }
         userService.insertByUser(user);
         return "redirect:/users/";
     }
@@ -87,7 +96,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String putUser(@ModelAttribute User user){
+    public String putUser( ModelMap map,
+                           @ModelAttribute @Valid User user,
+                           BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            map.addAttribute("action", "update");
+            return "userForm";
+        }
         userService.update(user);
         return "redirect:/users/";
     }

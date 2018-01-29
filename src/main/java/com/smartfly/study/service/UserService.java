@@ -14,15 +14,38 @@ import java.util.List;
  * To change this template use File | Settings | File Templates | Includes | File Header
  */
 public interface UserService {
-
+    /**
+     * 查找所有用户
+     * @return
+     */
     List<User> findAll();
 
+    /**
+     * 插入一个新用户
+     * @param user
+     * @return
+     */
     User insertByUser(User user);
 
+    /**
+     * 更新一个用户
+     * @param user
+     * @return
+     */
     User update(User user);
 
+    /**
+     * 删除一个用户
+     * @param id
+     * @return
+     */
     User delete(Long id);
 
+    /**
+     * 根据ID查找用户
+     * @param id
+     * @return
+     */
     User findById(Long id);
 
 }

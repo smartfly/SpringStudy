@@ -1,8 +1,14 @@
 package com.smartfly.study.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -27,16 +33,22 @@ public class User implements Serializable{
     /**
      * 名称
      */
+    @NotEmpty(message = "姓名不能为空")
+    @Size(min = 2, max = 8, message = "姓名长度必须大于2且小于8字")
     private String name;
 
     /**
      * 年龄
      */
+    @NotNull(message = "年龄不能为空")
+    @Min(value = 0, message = "年龄大于0")
+    @Max(value = 300, message = "年龄不大于300")
     private Integer age;
 
     /**
      * 出生时间
      */
+    @NotEmpty(message = "出生日期不能为空")
     private String birthday;
 
     public Long getId() {
