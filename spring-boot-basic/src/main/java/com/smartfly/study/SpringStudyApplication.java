@@ -1,5 +1,6 @@
 package com.smartfly.study;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,8 @@ import java.util.Arrays;
  */
 /*@SpringBootApplication：Spring Boot应用的标识*/
 @SpringBootApplication
+// mapper 接口类扫描包配置
+@MapperScan("com.smartfly.study.dao")
 public class SpringStudyApplication {
 
 	public static void main(String[] args) {
