@@ -13,11 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 /*@SpringBootApplication：Spring Boot应用的标识*/
 @SpringBootApplication
-// mapper 接口类扫描包配置
+// mapper 接口类扫描包配置注解MapperScan
 @MapperScan("com.smartfly.study.dao")
 public class SpringStudyApplication {
 
 	public static void main(String[] args) {
+		/*程序启动入口，启动嵌入式的Tomcat并初始化Spring环境极其各Spring组件*/
 		SpringApplication.run(SpringStudyApplication.class, args);
 	}
 

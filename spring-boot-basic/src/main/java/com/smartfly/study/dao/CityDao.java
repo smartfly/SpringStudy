@@ -14,6 +14,11 @@ import org.springframework.data.repository.query.Param;
  */
 public interface CityDao {
 
+    /**
+     * 根据城市名称，查询城市信息
+     * @param cityName 城市名
+     * @return
+     */
     City findByName(@Param("cityName") String cityName);
 
 }
